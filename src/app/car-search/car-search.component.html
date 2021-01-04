@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4><label for="search-box">Car Search</label></h4>
+
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" autocomplete="off" />
+
+  <ul class="search-result">
+    <li *ngFor="let car of cars$ | async" >
+      <a routerLink="/detail/{{car.id}}">
+        {{car.name}}
+      </a>
+    </li>
+  </ul>
+</div>

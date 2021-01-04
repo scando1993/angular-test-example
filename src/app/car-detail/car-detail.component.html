@@ -1,0 +1,40 @@
+<div *ngIf="car">
+  <h2>{{car.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{car.id}}</div>
+  <div>
+    <span>name: {{car.name}}
+      <!-- <input [(ngModel)]="car.name" placeholder="name"/> -->
+    </span>
+  </div>
+  <div>
+      <span>details:
+      {{car.details}}
+      </span>
+  </div>
+  <div>
+    <span>price per hour:
+      {{car.pricePerHour}}
+    </span>
+  </div>
+  <div>
+    <span>status:
+      {{car.isRented}}
+    </span>
+  </div>
+  <div *ngIf="!car.isRented">
+    <div>
+      <span>Quantity hours:</span>
+      <input type="range" min="1" max="100" class="slider" id="myRange" [(ngModel)]="totalHours">
+    </div>
+    <div>
+      <span>Total hours: {{totalHours}}</span>
+    </div>
+    <div>
+      <span>Total to pay: {{totalHours * car.pricePerHour | number : '1.2-2'}}</span>
+    </div>
+  </div>
+  <button (click)="goBack()">go back</button>
+
+
+  <button *ngIf="!car.isRented" (click)="rent()">rent</button>
+</div>
